@@ -40,4 +40,9 @@ public class Client : MonoBehaviour {
 			}
 		}
 	}
+
+	private void OnApplicationQuit()//當應用程式結束時
+	{
+		Network.Disconnect();//中斷客戶端連線
+	}
 }

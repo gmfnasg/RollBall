@@ -1,16 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\RollBallCardBoard\Assets\RemoteBall.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\RollBallController\Assets\Client.cs">
     <Files>
-      <File FileName="..\RollBallCardBoard\Assets\RemoteBall.cs" Line="10" Column="3" />
-      <File FileName="Assets\Server.cs" Line="34" Column="4" />
+      <File FileName="..\RollBallController\Assets\Client.cs" Line="47" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="G:\WorkSpace\RollBall\RollBallServer\Assets\Server.cs" line="47" />
-      <Breakpoint file="G:\WorkSpace\RollBall\RollBallServer\Assets\Server.cs" line="48" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
