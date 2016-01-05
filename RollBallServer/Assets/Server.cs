@@ -4,18 +4,28 @@ using System.Collections;
 public class Server : MonoBehaviour {
 	public GameObject ball = null;
 	public GameObject board = null;
+	public Vector3 pos = Vector3.zero;
 
 
 	void Awake(){
 		if (!GetComponent<NetworkView> ()) {
 			gameObject.AddComponent<NetworkView>();
 		}
+		if (board != null) {
+			pos = board.transform.position;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Network.peerType == NetworkPeerType.Server) {
+			LogText.AddLog("玩家數量:" + Network.connections.Length);
 			Debug.Log ("玩家數量:" + Network.connections.Length);
+
+			if((Input.touchCount>0 || Input.GetKeyDown(KeyCode.R)) &&  Network.connections.Length > 0){
+				LogText.AddLog("重置球的位置");
+				ball.transform.position = pos;
+			}
 
 			if (GetComponent<NetworkView> ()) {
 				if (ball != null)
@@ -30,6 +40,7 @@ public class Server : MonoBehaviour {
 
 			if (Network.peerType == NetworkPeerType.Server) {
 				Debug.Log ("玩家數量:" + Network.connections.Length);
+				LogText.AddLog("玩家數量:" + Network.connections.Length);
 			}
 		}
 			

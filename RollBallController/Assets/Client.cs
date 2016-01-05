@@ -3,40 +3,59 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class Client : MonoBehaviour {
-	Text LogText;
+	bool onConnect = false;
 
 	void Awake(){
 		if (!gameObject.GetComponent<NetworkView> ()) {
 			gameObject.AddComponent<NetworkView>();
 		}
+
+		MasterServer.ClearHostList();
+		MasterServer.RequestHostList ("CardBoard");
 	}
 
 	void Update () {
 		if (Network.peerType == NetworkPeerType.Disconnected) {
-			Debug.Log("斷線中");
+			LogText.AddLog("斷線中");
+			ConnectServer ();
 		}
 		if (Network.peerType == NetworkPeerType.Client) {
-			Debug.Log("與SERVER保持連線中1");
+			LogText.AddLog("與SERVER保持連線中1");
 		}
 		if (Network.peerType == NetworkPeerType.Connecting) {
-			Debug.Log("與SERVER保持連線中2");
+			LogText.AddLog("與SERVER保持連線中2");
 		}
-		if (Network.peerType == NetworkPeerType.Disconnected)
+
+		LogText.AddLog("touchCount:("+Input.touchCount+")");
+
+		if (Input.touchCount == 1) {
+			onConnect = false;
 			ConnectServer ();
+		}
+
+		if (Input.touchCount ==2) {
+			MasterServer.ClearHostList();
+			MasterServer.RequestHostList ("CardBoard");
+		}
 	}
 
 	void ConnectServer(){
-		MasterServer.RequestHostList ("CardBoard");
+		if (onConnect)
+			return;
 
 		HostData[] datas = MasterServer.PollHostList ();
-		
+		LogText.AddLog("datas " + datas );
 		if (datas.Length > 0) {
+			LogText.AddLog("datas.Length " + datas.Length );
+
 			HostData data = datas [0];
+			LogText.AddLog("ip:(" + data.ip +") port("+data.port+")");
+
 			if (data != null) {
 				Network.Connect (data);
+				onConnect = true;
 
-				if(LogText!=null)
-					LogText.text += "Connect to server! \r\n";
+				LogText.AddLog("Connect to server!");
 			}
 		}
 	}

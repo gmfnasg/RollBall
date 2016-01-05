@@ -9,8 +9,9 @@ public class Controller : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		Vector3 rot = new Vector3 (Input.acceleration.y, -Input.acceleration.x, 0);
+		if(Time.deltaTime >0)
 		if (Network.peerType == NetworkPeerType.Client) {
 			if (GetComponent<NetworkView> ()) {
 				GetComponent<NetworkView> ().RPC("UpdateRotateBoard", RPCMode.Server, rot);
