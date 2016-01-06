@@ -64,5 +64,17 @@ public class Client : MonoBehaviour {
 	{
 		Network.Disconnect();//中斷客戶端連線
 	}
+
+	[RPC]
+	void UpdateBall(Quaternion quaternion, Vector3 position){
+		LogText.AddLog("Get UpdateBall(quaternion:"+quaternion+", position:"+position+") \r\n");
+		GameObject.FindObjectOfType<RemoteBall>().UpdateBall (quaternion, position);
+	}
+
+	[RPC]
+	void UpdateBoardQuaternion(Quaternion quaternion){
+		LogText.AddLog("Get UpdateRotateBoard("+quaternion+") \r\n");
+		GameObject.FindObjectOfType<RemoteBoard>().UpdateBoardQuaternion (quaternion);
+	}
 }
 

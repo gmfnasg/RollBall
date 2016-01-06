@@ -3,8 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class RemoteBoard : MonoBehaviour {
-	[RPC]
-	void UpdateBoardQuaternion(Quaternion quaternion){
+	public void UpdateBoardQuaternion(Quaternion quaternion){
 		if (quaternion == null)
 			return;
 
