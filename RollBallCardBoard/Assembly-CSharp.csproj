@@ -72,6 +72,7 @@
      <Compile Include="Assets\LogText.cs" />
      <Compile Include="Assets\RemoteBall.cs" />
      <Compile Include="Assets\RemoteBoard.cs" />
+     <Compile Include="Assets\Webcam.cs" />
      <None Include="Assets\Cardboard\Resources\SkyboxMesh.shader" />
      <None Include="Assets\Cardboard\Distortion\CardboardDistortion.cginc" />
      <None Include="Assets\Cardboard\Resources\UnlitTexture.shader" />
